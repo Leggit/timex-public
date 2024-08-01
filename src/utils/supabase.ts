@@ -156,6 +156,7 @@ class MockSupabase {
   }
 
   private async getTimeEntriesForUser({ min_date, max_date }: any) {
+    console.log("Fetching time for dates " + min_date + " to " + max_date);
     const timeEntries = this.mockData.timeEntries.filter(
       (entry) =>
         new Date(entry.date).getTime() >= new Date(min_date).getTime() &&
@@ -341,5 +342,7 @@ class MockSupabase {
   };
 }
 const supabase = new MockSupabase();
+
+(window as any)["mockSupabase"] = supabase;
 
 export { supabase };
