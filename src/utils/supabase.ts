@@ -246,7 +246,9 @@ class MockSupabase {
   }
 
   private async upsertTimeEntries(timeEntries: ITimeEntry[]) {
-    timeEntries.forEach((entry, index) => (entry.id = this.getId()));
+    console.log("Inserting time entries: ");
+    console.log(timeEntries);
+    timeEntries.forEach((entry) => (entry.id = this.getId()));
     this.mockData.timeEntries.push(...timeEntries);
 
     if (timeEntries[0].projectCode === "HOLIDAY") {
