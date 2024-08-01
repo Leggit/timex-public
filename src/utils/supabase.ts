@@ -173,6 +173,10 @@ class MockSupabase {
         timeEntry.holidayStatus = holiday?.status;
         timeEntry.isHoliday = !!holiday;
       }
+      const project = this.mockData.projects.find(
+        (p) => p.projectCode === timeEntry.projectCode,
+      );
+      timeEntry.displayColour = project?.displayColour;
     });
     return this.returnWithDelay({
       data: timeEntries,
