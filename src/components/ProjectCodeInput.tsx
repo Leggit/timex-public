@@ -53,7 +53,7 @@ export default function ProjectCodeInput({
         id="projectCode"
         required
         sx={{ mb: 2 }}>
-        <FormLabel>{label || "Project code"}</FormLabel>
+        <FormLabel>{label || "Project ID"}</FormLabel>
         <Autocomplete
           autoComplete={false}
           freeSolo

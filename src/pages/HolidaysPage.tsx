@@ -151,8 +151,8 @@ export default function HolidaysPage() {
                       <th>Date range</th>
                       <th>Duration</th>
                       <th>Status</th>
-                      <th>Authorising project code</th>
-                      <th>Authoriser</th>
+                      <th>Authorising project</th>
+                      <th>Authorising manager</th>
                       <th>Comment</th>
                       <th></th>
                     </tr>
