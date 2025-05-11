@@ -38,11 +38,11 @@ import TimeEntryModal from "../components/TimeEntryModal";
 import { useMonthCalendar } from "../hooks/calendar";
 
 function TimeSheetPage() {
-  const [today] = useState(new Date());
+  const today = new Date();
   const [month, setMonth] = useState(today.getMonth() + 1);
   const [year, setYear] = useState(today.getFullYear());
   const [showMonthPickerModal, setShowMonthPickerModal] = useState(false);
-  const [currentDate, setCurrentDate] = useState(new Date(year, month - 1, 1));
+  const currentDate = new Date(year, month - 1, 1);
   const [showIncompleteDays, setShowIncompleteDays] = useState(false);
   const [showTimeEntryModal, setShowTimeEntryModal] = useState(false);
   const [selectionMode, setSelectionMode] = useState(false);
@@ -67,8 +67,6 @@ function TimeSheetPage() {
   const [loading, setLoading] = useState(false);
 
   const monthCalendar = useMonthCalendar(year, month);
-
-  useEffect(() => setCurrentDate(new Date(year, month - 1, 1)), [year, month]);
 
   useEffect(() => {
     const getData = async () => {
@@ -148,7 +146,10 @@ function TimeSheetPage() {
     }
   };
 
-  useEffect(() => setSelectionTimeEntries([]), [selectionMode]);
+  const toggleSelectionMode = () => {
+    setSelectionTimeEntries([]);
+    setSelectionMode(!selectionMode);
+  };
 
   return (
     <>
@@ -206,7 +207,7 @@ function TimeSheetPage() {
             <Button
               sx={{ ml: selectionMode ? 0 : 1 }}
               variant={selectionMode ? "solid" : "outlined"}
-              onClick={() => setSelectionMode(!selectionMode)}>
+              onClick={toggleSelectionMode}>
               Select&nbsp;
               <CheckBox />
             </Button>
